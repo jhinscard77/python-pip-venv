@@ -222,6 +222,12 @@ poetry.toml
 pyrightconfig.json
 
 ### Windows ###
+
+# WSL images
+*.png 
+*.jpg 
+
+
 # Windows thumbnail cache files
 Thumbs.db
 Thumbs.db:encryptable
