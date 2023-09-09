@@ -1,19 +1,29 @@
 import clase_27_mod as mod
 import read_csv
 import charts
+import pandas as pd
 
 
 def run():
-    data = read_csv.read_csv('world_population.csv')
+    '''
     # Esto funciona como filtro
-    data = list(
-        filter(lambda item: item['Continent'] == 'South America', data))
+    data = list(filter(lambda item: item['Continent'] == 'South America', data))
 
     countries = list(map(lambda x: x['Country/Territory'], data))
     percentages = list(map(lambda x: x['World Population Percentage'], data))
     # charts.generate_bar_chart(countries, percentages)
+    # Este bloque comentado se simplifica haicendolo con pandas
+    # En las lineas siguientes se muestra como se hace con pandas
+    '''
+
+    df = pd.read_csv('world_population.csv')
+    df = df[df['Continent'] == 'Africa']
+
+    countries = df['Country/Territory'].values
+    percentages = df['World Population Percentage'].values
     charts.generate_pie_chart(countries, percentages)
 
+    data = read_csv.read_csv('world_population.csv')
     # Este codigo comentado hace la grafica de la poblacion de un pais que se esoja
     country = input('Type country => ')
 
